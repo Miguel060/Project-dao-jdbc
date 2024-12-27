@@ -11,8 +11,7 @@ import java.util.List;
 public class Program {
     public static void main(String[] args) {
         SellerDao sellerdao = DaoFactory.createSellerDao();
-        Department dep = new Department(2, null);
-        List<Seller> list = sellerdao.findByDepartment(dep);
+        List<Seller> list = sellerdao.findAll();
         list.forEach(System.out::println);
     }
 }
