@@ -42,12 +42,15 @@ public class SellerDaoJDBC implements SellerDao {
                 if (rs.next()) {
                     int id = rs.getInt(1);
                     obj.setId(id);
+                    DB.closeResultSet(rs);
                 }
             } else {
                 throw new DbException("Unexpected Error, no rows affected!");
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
+        }finally {
+            DB.closeStatement(st);
         }
     }
 
